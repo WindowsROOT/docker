@@ -1,0 +1,23 @@
+version: "3"
+
+services:
+ 
+   wordpress:
+     image: wordpress:latest
+     expose:
+       - 80
+     restart: always
+     environment:
+       VIRTUAL_HOST: web2.alacta.net
+       WORDPRESS_DB_HOST: db_node_domain:3306
+       WORDPRESS_DB_USER: root
+       WORDPRESS_DB_PASSWORD: PASSWORD
+       WORDPRESS_DB_NAME: wordpress2
+     container_name: wordpress2
+volumes:
+    db_data:
+
+networks:
+  default:
+    external:
+      name: nginx-proxy
